@@ -25,13 +25,14 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
-    @ManyToMany
+    @Fetch(FetchMode.JOIN)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    @Fetch(FetchMode.JOIN)
+
     private Set<Role> userRoles;
 
     public User() {

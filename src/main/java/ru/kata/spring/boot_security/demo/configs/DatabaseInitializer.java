@@ -18,6 +18,7 @@ public class DatabaseInitializer {
     private final UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder;
 
+
     @Autowired
     public DatabaseInitializer(RoleRepository roleRepository, UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.roleRepository = roleRepository;
@@ -30,6 +31,7 @@ public class DatabaseInitializer {
     public void initializeDatabase() {
         Role adminRole = new Role("ROLE_ADMIN");
         Role userRole = new Role("ROLE_USER");
+
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
@@ -41,4 +43,5 @@ public class DatabaseInitializer {
         userRepository.save(userFirst);
         userRepository.save(userSecond);
     }
+
 }

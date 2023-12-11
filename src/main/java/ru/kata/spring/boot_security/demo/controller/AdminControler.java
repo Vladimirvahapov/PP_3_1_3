@@ -36,7 +36,7 @@ public class AdminControler {
     public String getAllUsers(ModelMap model, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         model.addAttribute("user", userService.findByUsername(userDetails.getUsername()));
-        model.addAttribute("allusers", userService.getAllUsers());
+        model.addAttribute("allusers", userService.findAllWithRoles());
         return "/users-list";
     }
 
